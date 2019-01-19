@@ -1,6 +1,7 @@
 import json
 from flask import Flask, Response, request, g
 import sqlite3
+import os
 
 app = Flask(__name__)
 app.config['APPLICATION_ROOT'] = '/api/v1'
@@ -19,7 +20,17 @@ def search():
     req = request.json
     if req == None:
         return error('empty search request')
-    return send_json(req)
+    db = get_db()
+    tags = req['tags']
+    matches = []
+    for tag in tags:
+        c = db.execute(
+                '''SELECT name, age, email, hashtag FROM users
+                JOIN search ON users.userid = search.user
+                WHERE hashtag = ?''', [tag['tag']]
+                )
+        matches.append([tuple(row) for row in c.fetchall()])
+    return send_json(matches)
 
 ### Helper Functions
 
