@@ -1,5 +1,6 @@
 import json
-from flask import Flask, Response, request, g
+from flask import Flask, Response, request, g, send_file
+import io
 import sqlite3
 import os
 
@@ -31,6 +32,27 @@ def search():
                 )
         matches.append([tuple(row) for row in c.fetchall()])
     return send_json(matches)
+
+@app.route('/api/v1/user/image/', methods=['GET'])
+def user_images():
+    try:
+        user = request.args['user']
+    except KeyError as e:
+        return error('Missing user parameter')
+    db = get_db()
+    old = db.text_factory
+    db.text_factory = bytes
+    c = db.execute('SELECT picture FROM users WHERE userid = ?', [user])
+    try:
+        img = c.fetchone()[0]
+    except TypeError as e:
+        return error(f'No image for user {user}')
+    db.text_factory = old
+    return send_file(
+            io.BytesIO(img),
+            mimetype='image/jpeg',
+            attachment_filename=f'{user}.jpg'
+            )
 
 ### Helper Functions
 
