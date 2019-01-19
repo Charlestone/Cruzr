@@ -30,7 +30,7 @@ def search():
                 JOIN search ON users.userid = search.user
                 WHERE hashtag = ?''', [tag['tag']]
                 )
-        matches.append([tuple(row) for row in c.fetchall()])
+        matches.append([dict(zip(row.keys(), row)) for row in c.fetchall()])
     return send_json(matches)
 
 @app.route('/api/v1/user/image/', methods=['GET'])
