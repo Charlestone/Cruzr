@@ -10,17 +10,28 @@ app.config['APPLICATION_ROOT'] = '/api/v1'
 @app.route('/api/v1/')
 def root():
     obj = {
-        "version":1.0
+        "version": 1.0
     }
     return send_json(obj)
 
+@app.route('/api/v1/search/', methods=['POST'])
+def search():
+    req = request.json
+    if req == None:
+        return error('empty search request')
+    return send_json(req)
 
 ### Helper Functions
 
 def send_json(message, code=200):
     return Response(response=json.dumps(message),
-            status=code,
-            mimetype='application/json')
+                    status=code,
+                    mimetype='application/json')
+
+def error(message, code =400):
+    return Response(response=message,
+                    status=code,
+                    mimetype='text/plain')
 
 
 def connect_db():
