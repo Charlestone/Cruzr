@@ -32,7 +32,7 @@ def search():
     matches = []
     for tag in tags:
         c = db.execute(
-                '''SELECT name, age, email, hashtag FROM users
+                '''SELECT name, age, email, hashtag, userid FROM users
                 JOIN search ON users.userid = search.user
                 WHERE hashtag = ?''', [tag['tag']]
                 )
