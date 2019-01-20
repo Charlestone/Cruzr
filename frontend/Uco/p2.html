@@ -18,6 +18,7 @@
             <button class="btn-primary" onclick="createCards()">Test button</button>
             <p id="demo"></p>
             <button class="btn-primary" onclick="serverRequest()">Request</button>
+            <button class="btn-primary" onclick="serverPOST()">POST</button>
         </div>
     </section>
 
@@ -35,22 +36,43 @@
 </body>
 
 <script>
+    //Test server request
     function serverRequest() {
-
+        //Server connection
         var xhr = new XMLHttpRequest();
         xhr.open('GET', 'http://cruzhacks2019.appspot.com/api/v1/', true);
 
-        //xhr.open('GET', 'cruzhacks2019.appspot.com/api/v1/cross/?cruzerID=1&cruzedID=2&tag=uco', true);
-
+        //To check if it was correct
         xhr.onload = function () {
             // Request finished. Do processing here.
             document.getElementById("demo").innerHTML = this.responseText;
         };
 
+        //send request
         xhr.send();
         xhr.send('jgugj');
     }
 
+    function serverPOST() {
+        var data = {
+            'bob': 'foo',
+            'paul': 'dog'
+        };
+        $.ajax({
+            url: 'http://cruzhacks2019.appspot.com/api/v1/',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(
+
+            ),
+            dataType: 'json'
+        });
+    }
+
+
+
+
+    // Creation of the Elements
     function createCards() {
         //List creation
         var list = [person1]; //, person2];
