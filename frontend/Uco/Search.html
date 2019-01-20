@@ -18,18 +18,7 @@
             <button class="btn-primary" onclick="createCards()">Test button</button>
             <p id="demo"></p>
             <button class="btn-primary" onclick="serverRequest()">Request</button>
-            <!--button class="btn-primary" onclick="serverPOST()">POST</button-->
-        </div>
-    </section>
-
-    <section class="jumbotron text-center">
-        <div class="container">
-            <h3 id="title"> What are you looking for?</h3>
-            <p id="element_sent">sent:</p>
-            <form id="outersearch" class="form-inline" href="Default">
-                <input id="mySearch" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="S">
-            </form>
-            <button class="btn-primary" onclick="searchFunction()">Search (POST)</button>
+            <button class="btn-primary" onclick="serverPOST()">POST</button>
         </div>
     </section>
 
@@ -47,41 +36,6 @@
 </body>
 
 <script>
-    var obj_to_sent;
-
-    //Search function\
-    function searchFunction() {
-        //var tag = HTML.getElementById(search)
-        //var x = document.getElementById("mySearch").$element;
-        var tag_searched = "word"
-        document.getElementById("element_sent").innerHTML = tag_searched;
-
-        //prepare the variable to send back
-        obj_to_sent = {
-            user: "John",
-            "tags": tag_searched[{
-                "tag": tag_searched,
-                "ttl": 9999999
-            }]
-        };
-
-    }
-
-
-
-    $.ajax({
-        url: 'http://cruzhacks2019.appspot.com/api/v1/',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(
-            obj_to_sent
-        ),
-        dataType: 'json'
-    });
-
-
-
-
     //Test server request
     function serverRequest() {
         //Server connection
@@ -99,12 +53,29 @@
         xhr.send('jgugj');
     }
 
+    function serverPOST() {
+        var data = {
+            'bob': 'foo',
+            'paul': 'dog'
+        };
+        $.ajax({
+            url: 'http://cruzhacks2019.appspot.com/api/v1/',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(
+
+            ),
+            dataType: 'json'
+        });
+    }
+
+
 
 
     // Creation of the Elements
     function createCards() {
         //List creation
-        var list = [person1, person2]; //, person2];
+        var list = [person1]; //, person2];
 
         //For each element in the list, call the fucntion that creates an user
         list.forEach(element => {
