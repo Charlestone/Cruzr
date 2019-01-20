@@ -24,17 +24,20 @@
             age 50
         };
 
-
         function fun(person) {
             return person.firstName + " " + person.lastName;
         }
 
 
 
-        document.getElementById("demo").innerHTML = fun(person3);
 
 
-        function myFunction() {
+        function myFunction(person2) {
+            document.getElementById("demo").innerHTML = fun(person3);
+        }
+
+
+        function myFunction2() {
             let num = 5;
             const fragment = document.getElementById('template').content.cloneNode(true);
             while (num-- > 1) {
