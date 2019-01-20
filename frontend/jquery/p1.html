@@ -15,15 +15,35 @@
     //const createElement = [name] => $('<div>' + name + '</div>')
 
     function createElement(name) {
-        return $('<div>' + name + '</div>')
+
+        // var element = $('<div>' + name + '</div>')
+        // var element2 = $('<p>' + "nuevo parrafo" + '</p>')
+        // //var element2 = $('<div>' + name2 + '</div>')
+        // return (element + " " + element2)
     }
 
+    const Section = (key, name) => $(
+        `
+    <section key="${key}">
+        <p>${name} <span class="score"></span></p>
+        <div class="controls">
+            <button class="minus">-</button>
+            <button class="plus">+</button>
+        </div>
+    </section>
+`
+    );
 
     $(function () {
 
-        let nombre = 'uco'
-        let $element = createElement(nombre)
-        $('#parent').append($element)
+        let nombre1 = 'uco'
+        let nombre2 = 'Lewis'
+        // let $element = createElement(nombre1)
+
+        $section = Section("Uco", "lav");
+        $('#parent').append($section);
+
+        //$('#parent').append($element)
 
     })
 </script>
