@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Homework</title>
+
+<body>
+    <button onclick="myFunction()">Try it</button>
+    <template id="template">
+        <p>Smile!</p>
+    </template>
+    <script>
+        < script >
+
+            var person = {
+                firstName: "Jiiiin",
+                lastName: "Deeeei",
+                age: 20
+            };
+
+        var person2 = {
+            firstName: "Jn",
+            lastName: "Deioi",
+            age 50
+        };
+
+
+        function fun(person) {
+            return person.firstName + " " + person.lastName;
+        }
+
+
+
+        document.getElementById("demo").innerHTML = fun(person3);
+
+
+        function myFunction() {
+            let num = 5;
+            const fragment = document.getElementById('template').content.cloneNode(true);
+            while (num-- > 1) {
+                fragment.firstChild.before(fragment.firstChild.cloneNode(true));
+                fragment.firstChild.textContent += fragment.lastChild.textContent;
+                document.body.appendChild(fragment);
+            }
+
+        }
+    </script>
+</body>
+
+</html>
