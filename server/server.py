@@ -1,5 +1,6 @@
 import json
-from flask import Flask, Response, request, g
+from flask import Flask, Response, request, g, send_file
+import io
 import sqlite3
 import os
 import smtplib
@@ -35,8 +36,13 @@ def search():
                 JOIN search ON users.userid = search.user
                 WHERE hashtag = ?''', [tag['tag']]
                 )
-        matches.append([tuple(row) for row in c.fetchall()])
+        matches.append([dict(zip(row.keys(), row)) for row in c.fetchall()])
+        db.execute(
+                '''INSERT INTO search (user, hashtag) VALUES (?, ?)
+                ''', [req['user'], tag['tag']])
+    db.commit()
     return send_json(matches)
+
 
 @app.route('/api/v1/cross/', methods=['GET'])
 def cross() :
@@ -55,6 +61,28 @@ def cross() :
     sendEmail(cruzerMail, cruzedMail, tag)
     print(cruzedMail)
     return Response(status=200)
+
+
+@app.route('/api/v1/user/image/', methods=['GET'])
+def user_images():
+    try:
+        user = request.args['user']
+    except KeyError as e:
+        return error('Missing user parameter')
+    db = get_db()
+    old = db.text_factory
+    db.text_factory = bytes
+    c = db.execute('SELECT picture FROM users WHERE userid = ?', [user])
+    try:
+        img = c.fetchone()[0]
+    except TypeError as e:
+        return error(f'No image for user {user}')
+    db.text_factory = old
+    return send_file(
+            io.BytesIO(img),
+            mimetype='image/jpeg',
+            attachment_filename=f'{user}.jpg'
+            )
 
 
 ### Helper Functions
