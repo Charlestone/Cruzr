@@ -2,6 +2,12 @@ import json
 from flask import Flask, Response, request, g
 import sqlite3
 import os
+import smtplib
+import ssl
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.headerregistry import Address
+
 
 app = Flask(__name__)
 app.config['APPLICATION_ROOT'] = '/api/v1'
@@ -31,6 +37,25 @@ def search():
                 )
         matches.append([tuple(row) for row in c.fetchall()])
     return send_json(matches)
+
+@app.route('/api/v1/cross/', methods=['GET'])
+def cross() :
+    db = get_db()
+    cruzerID = request.args['cruzerID']
+    cruzedID = request.args['cruzedID']
+    tag = request.args['tag']
+    print("test4")
+    cruzedMail = db.execute(
+            ''' SELECT email FROM users WHERE userid = ?''',cruzedID
+    ).fetchone()[0]
+    cruzerMail = db.execute(
+            ''' SELECT email FROM users WHERE userid = ?''', cruzerID
+    ).fetchone()[0]
+    print("test5")
+    sendEmail(cruzerMail, cruzedMail, tag)
+    print(cruzedMail)
+    return Response(status=200)
+
 
 ### Helper Functions
 
@@ -83,3 +108,41 @@ def close_db(error):
     """Closes the database again at the end of the request."""
     if hasattr(g, 'sqlite_db'):
         g.sqlite_db.close()
+
+
+def sendEmail(cruzerMail, cruzedMail, tag) :
+    port = 465  # For SSL
+    smtp_server = "smtp.gmail.com"
+    sender_email = "CruzrCrossManager@gmail.com"  # Enter your address
+    receiver_email = cruzedMail   #"tbaillym@ucsc.edu"  # Enter receiver address
+    password = "DLUCT0120"
+
+    message = MIMEMultipart("alternative")
+    message["Subject"] = "You got crossed"
+    message["From"] = sender_email
+    message["To"] = receiver_email
+
+    html = f"""\
+    <html>
+      <body>
+        <p>Hi there!<br>
+        You got crossed for the tag <strong>{tag}</strong>.<br>
+        Contact your Cruzer at:  <strong>{cruzerMail} </strong><br>
+        </p>
+      </body>
+    </html>
+    """
+    # Turn these into plain/html MIMEText objects
+    part = MIMEText(html, "html")
+
+    # Add HTML/plain-text parts to MIMEMultipart message
+    # The email client will try to render the last part first
+    message.attach(part)
+
+    context = ssl.create_default_context()
+    with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+        server.login(sender_email, password)
+        server.sendmail(sender_email, receiver_email, message.as_string())
+
+
+
