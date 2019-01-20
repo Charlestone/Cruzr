@@ -37,9 +37,12 @@ def search():
                 WHERE hashtag = ?''', [tag['tag']]
                 )
         matches.append([dict(zip(row.keys(), row)) for row in c.fetchall()])
+        '''
+        Comment this out until stuff starts working
         db.execute(
-                '''INSERT INTO search (user, hashtag) VALUES (?, ?)
-                ''', [req['user'], tag['tag']])
+                INSERT INTO search (user, hashtag) VALUES (?, ?)
+                , [req['user'], tag['tag']])
+        '''
     db.commit()
     return send_json(matches)
 
