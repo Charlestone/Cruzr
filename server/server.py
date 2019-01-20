@@ -31,6 +31,10 @@ def search():
                 WHERE hashtag = ?''', [tag['tag']]
                 )
         matches.append([dict(zip(row.keys(), row)) for row in c.fetchall()])
+        db.execute(
+                '''INSERT INTO search (user, hashtag) VALUES (?, ?)
+                ''', [req['user'], tag['tag']])
+    db.commit()
     return send_json(matches)
 
 @app.route('/api/v1/user/image/', methods=['GET'])
