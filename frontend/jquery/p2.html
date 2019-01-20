@@ -16,6 +16,8 @@
             <h1 class="jumbotron-heading">#Frisbee</h1>
             <p class="lead text-muted">People interested in throwing flat discs around</p>
             <button class="btn-primary" onclick="createCards()">Test button</button>
+            <p id="demo"></p>
+            <button class="btn-primary" onclick="serverRequest()">Request</button>
         </div>
     </section>
 
@@ -33,23 +35,25 @@
 </body>
 
 <script>
-    var person1 = {
-        firstName: "Johnperson 1",
-        lastName: "Doe1",
-        age: 50,
-        eyeColor: "blue"
-    };
+    function serverRequest() {
 
-    var person2 = {
-        firstName: "person2",
-        lastName: "jot",
-        age: 6,
-        eyeColor: "red"
-    };
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://cruzhacks2019.appspot.com/api/v1/', true);
+
+        //xhr.open('GET', 'cruzhacks2019.appspot.com/api/v1/cross/?cruzerID=1&cruzedID=2&tag=uco', true);
+
+        xhr.onload = function () {
+            // Request finished. Do processing here.
+            document.getElementById("demo").innerHTML = this.responseText;
+        };
+
+        xhr.send();
+        xhr.send('jgugj');
+    }
 
     function createCards() {
         //List creation
-        var list = [person1, person2];
+        var list = [person1]; //, person2];
 
         //For each element in the list, call the fucntion that creates an user
         list.forEach(element => {
@@ -69,7 +73,7 @@
     }
 
     //Element to add
-    const Element = (key, name, age) => $(
+    const Element = (name, age) => $(
         `
             <div class="col-md-4">
                         <div class="card mb-4 shadow-sm">
@@ -99,6 +103,22 @@
       
     `
     );
+
+
+    //Two persons for testing purpose
+    var person1 = {
+        firstName: "Johnperson 1",
+        lastName: "Doe1",
+        age: 50,
+        eyeColor: "blue"
+    };
+
+    var person2 = {
+        firstName: "person2",
+        lastName: "jot",
+        age: 6,
+        eyeColor: "red"
+    };
 </script>
 
 </html>
