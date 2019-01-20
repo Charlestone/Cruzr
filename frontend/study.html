@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    
+        <link href="styles.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800i|Permanent+Marker" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <section id="cruzrbox" class="jumbotron">
+        <div>
+            <h1 id="cruzr">
+                CRUZR
+            </h1>
+        </div>
+    </section>
+
+    <section id="bigbox" class="jumbotron text-center">
+        <div class="container">
+            <!-- Search form -->
+            <h3 id="title">
+                What are you looking for?</h3>
+            <nav id = "purplebox" class="navbar navbar-light bg-light">
+                <form id="outersearch" class="form-inline" href="Default">
+                    <input id="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="S">
+                    <button id="button" class="fa fa-search btn btn-outline-success my-2 my-sm-0" type="submit"></button>
+                </form>
+            </nav>
+
+            <h2 class="title">Popular Searches</h2>
+            <a href="./pizza.html" class="badge badge-info tags">Pizza</a>
+            <a href="./frisbee.html" class="badge badge-info tags">Frisbee</a>
+            <a href="./study.html" class="badge badge-info tags">Study Groups</a>
+            <a href="./sailing.html" class="badge badge-info tags">Sailing</a>
+
+
+
+
+        </div>
+    </section>
+
+    <div id="mini" class="jumbotron">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                        alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="data:image/jpeg;base64,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"
+                        data-holder-rendered="true">
+                    <div class="card-body">
+                        <h4>Jon</h4>
+                        <a href="./index.html" class="text">@jon</a>
+                        <br></br>
+                        <p class="card-text">Currently studing in SNE if anyone wants to join</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <div><a href="./study.html" class="minitags">Study Group</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                        alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="https://img.purch.com/w/660/aHR0cDovL3d3dy5saXZlc2NpZW5jZS5jb20vaW1hZ2VzL2kvMDAwLzAzMS83MDEvb3JpZ2luYWwvbWFuYXRlZS5KUEc="
+                        data-holder-rendered="true">
+                    <div class="card-body">
+                        <h4>Andy</h4>
+                        <a href="./index.html" class="text">@andy</a>
+                        <br></br>
+                        <p class="card-text">Looking for a study buddy</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <div><a href="./study.html" class="minitags">Study Group</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                        alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="http://mediad.publicbroadcasting.net/p/wlrn/files/styles/x_large/public/201712/manatee_too.jpeg"
+                        data-holder-rendered="true">
+                    <div class="card-body">
+                        <h4>Sofia</h4>
+                        <a href="./index.html" class="text">@sofia</a>
+                        <br></br>
+                        <p class="card-text">Who needs help with CE12?</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <div><a href="./study.html" class="minitags">Study Group</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                        alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvYp21G5sFAdJcJwQYfG7QelOI7O9eBvW9UBFFqppsHxscFqU8"
+                        data-holder-rendered="true">
+                    <div class="card-body">
+                        <h4>Raymond</h4>
+                        <a href="./index.html" class="text">@ray</a>
+                        <br></br>
+                        <p class="card-text">I need HELP</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <div><a href="./study.html" class="minitags">Study Group</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                        alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="https://bloximages.newyork1.vip.townnews.com/richlandsource.com/content/tncms/assets/v3/editorial/1/be/1be98a98-ae18-11e7-82b5-13199f3874a6/59dd60cfc009f.image.jpg?resize=400%2C267"
+                        data-holder-rendered="true">
+                    <div class="card-body">
+                        <h4>Carlos</h4>
+                        <a href="./index.html" class="text">@carlos</a>
+                        <br></br>
+                        <p class="card-text">Join our study group in BE180</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <div><a href="./study.html" class="minitags">Study Group</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                        alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="https://animals.sandiegozoo.org/sites/default/files/2017-06/manatee_01.jpg"
+                        data-holder-rendered="true">
+                    <div class="card-body">
+                        <h4>Marcy</h4>
+                        <a href="./index.html" class="text">@marcy</a>
+                        <br></br>
+                        <p class="card-text">Running an MSI section this Tuesday</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <div><a href="./study.html" class="minitags">Study Group</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                        alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="https://media.gannett-cdn.com/37906159001/37906159001_5715591788001_5715589362001-vs.jpg?pubId=37906159001&quality=10"
+                        data-holder-rendered="true">
+                    <div class="card-body">
+                        <h4>Paige</h4>
+                        <a href="./index.html" class="text">@paige</a>
+                        <br></br>
+                        <p class="card-text">Anyone else stuck on AMS20 HW2?</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <div><a href="./study.html" class="minitags">Study Group</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                        alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTgCANy-bnwsy3Ydan3J2u0vfqtWuxTSDzOu0fUcoo3TGIxrw6"
+                        data-holder-rendered="true">
+                    <div class="card-body">
+                        <h4>Bob</h4>
+                        <a href="./index.html" class="text">@bob</a>
+                        <br></br>
+                        <p class="card-text">Looking to tutor for Calculus</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <div><a href="./study.html" class="minitags">Study Group</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                        alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN1SNizxPRfr7pW6Q7yXmuzytGEd9BPeVFDIljZMQ_wDQayGfQSA"
+                        data-holder-rendered="true">
+                    <div class="card-body">
+                        <h4>Uco</h4>
+                        <a href="./index.html" class="text">@uco</a>
+                        <br></br>
+                        <p class="card-text">Any study groups in McHenry?</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <div><a href="./study.html" class="minitags">Study Group</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+</html>
