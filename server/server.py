@@ -50,16 +50,13 @@ def cross() :
     cruzerID = request.args['cruzerID']
     cruzedID = request.args['cruzedID']
     tag = request.args['tag']
-    print("test4")
     cruzedMail = db.execute(
             ''' SELECT email FROM users WHERE userid = ?''',cruzedID
     ).fetchone()[0]
     cruzerMail = db.execute(
             ''' SELECT email FROM users WHERE userid = ?''', cruzerID
     ).fetchone()[0]
-    print("test5")
     sendEmail(cruzerMail, cruzedMail, tag)
-    print(cruzedMail)
     return Response(status=200)
 
 
@@ -137,13 +134,16 @@ def close_db(error):
     if hasattr(g, 'sqlite_db'):
         g.sqlite_db.close()
 
+def get_secrets():
+    with open('secrets.json', 'r') as f:
+        secrets = json.loads(f.read())
+    return secrets['gmail_email'], secrets['gmail_password']
 
 def sendEmail(cruzerMail, cruzedMail, tag) :
     port = 465  # For SSL
     smtp_server = "smtp.gmail.com"
-    sender_email = "CruzrCrossManager@gmail.com"  # Enter your address
     receiver_email = cruzedMail   #"tbaillym@ucsc.edu"  # Enter receiver address
-    password = "DLUCT0120"
+    sender_email, password = get_secrets()
 
     message = MIMEMultipart("alternative")
     message["Subject"] = "You got crossed"
