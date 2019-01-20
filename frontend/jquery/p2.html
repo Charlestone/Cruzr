@@ -15,7 +15,7 @@
         <div class="container">
             <h1 class="jumbotron-heading">#Frisbee</h1>
             <p class="lead text-muted">People interested in throwing flat discs around</p>
-            <button class="btn-primary" onclick="myFunction()">Test button</button>
+            <button class="btn-primary" onclick="createCards()">Test button</button>
         </div>
     </section>
 
@@ -33,11 +33,36 @@
 </body>
 
 <script>
+    var person1 = {
+        firstName: "Johnperson 1",
+        lastName: "Doe1",
+        age: 50,
+        eyeColor: "blue"
+    };
+
+    var person2 = {
+        firstName: "person2",
+        lastName: "jot",
+        age: 6,
+        eyeColor: "red"
+    };
+
+    function createCards() {
+        //List creation
+        var list = [person1, person2];
+
+        //For each element in the list, call the fucntion that creates an user
+        list.forEach(element => {
+            myFunction(element.firstName, element.age)
+        });
+
+    }
+
     //On click function
-    function myFunction() {
+    function myFunction(name, age) {
         $(function () {
             // Creates the new element
-            $element = Element("Uco", "lav");
+            $element = Element(name, age);
             $('#parent').append($element);
         })
 
