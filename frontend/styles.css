@@ -36,7 +36,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: white;
+    background-color: #F8F8F5;
 }
 
 h1 {
