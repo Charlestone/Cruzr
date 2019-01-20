@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+
+    <button class="btn-primary" onclick="myFunction()">Click me</button>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+
+
+                <!-- OUR ELEMENT STUFF-->
+                <div id="parent"></div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+<script>
+    //Elemento a anadir
+
+    const Elmenet2 = (name, age) => $(
+        `
+    <div class="card mb-4 shadow-sm">
+                        <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                            alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22508%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20508%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16864f80f96%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16864f80f96%22%3E%3Crect%20width%3D%22508%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22169.7578125%22%20y%3D%22123.6%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
+                            data-holder-rendered="true">
+                        <div class="card-body">
+                            <h4>Dylan</h4>
+                            <a href="./index.html" class="text">@dylany</a>
+                            <br></br>
+                            <p class="card-text">Hi there! please contact me if you have one of the next interest!.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="./index.html" class="badge badge-info">Pizza</a>
+                                    <!--a href="./index.html" class="badge badge-info">CE12</a>-->
+                                    <!--a href="./index.html" class="badge badge-info">Yerba Mate</a>-->
+                                    <a href="./index.html" class="badge badge-info">Frisbee</a>
+                                    <a href="./index.html" class="badge badge-info">Study Groups</a>
+                                    <a href="./index.html" class="badge badge-info">Gym</a>
+                                    <!--a href="./index.html" class="badge badge-info">Housing</a>-->
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+   `
+    );
+
+
+
+    const Element = (key, name, age) => $(
+        `
+            <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                                alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22508%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20508%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16864f80f96%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16864f80f96%22%3E%3Crect%20width%3D%22508%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22169.7578125%22%20y%3D%22123.6%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
+                                data-holder-rendered="true">
+                            <div class="card-body">
+                                <h4>${name}</h4>
+                                <a href="./index.html" class="text">@dylany</a>
+                                <br></br>
+                                <p class="card-text">${age}Hi there! please contact me if you have one of the next interest!.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="./index.html" class="badge badge-info">Pizza</a>
+                                        <!--a href="./index.html" class="badge badge-info">CE12</a>-->
+                                        <!--a href="./index.html" class="badge badge-info">Yerba Mate</a>-->
+                                        <a href="./index.html" class="badge badge-info">Frisbee</a>
+                                        <a href="./index.html" class="badge badge-info">Study Groups</a>
+                                        <a href="./index.html" class="badge badge-info">Gym</a>
+                                        <!--a href="./index.html" class="badge badge-info">Housing</a>-->
+                                    </div>
+                                    <small class="text-muted">9 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+      
+    `
+    );
+
+    function myFunction() {
+        $(function () {
+
+            //let nombre1 = 'uco'
+            //let nombre2 = 'Lewis'
+            // let $element = createElement(nombre1)
+
+            $element = Element("Uco", "lav");
+            $('#parent').append($element);
+
+            //$('#parent').append($element)
+
+        })
+    }
+</script>
+
+</html>

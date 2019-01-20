@@ -3,26 +3,23 @@
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
 
     <div id="parent"></div>
     <button class="btn-primary" onclick="myFunction()">Click me</button>
+
+
 </body>
 
 <script>
-    //const createElement = [name] => $('<div>' + name + '</div>')
-
-    function createElement(name) {
-
-        // var element = $('<div>' + name + '</div>')
-        // var element2 = $('<p>' + "nuevo parrafo" + '</p>')
-        // //var element2 = $('<div>' + name2 + '</div>')
-        // return (element + " " + element2)
-    }
-
-    const Section = (key, name) => $(
+    //Elemento a anadir
+    const Element = (key, name) => $(
         `
     <section key="${key}">
         <p>${name} <span class="score"></span></p>
@@ -40,8 +37,8 @@
         let nombre2 = 'Lewis'
         // let $element = createElement(nombre1)
 
-        $section = Section("Uco", "lav");
-        $('#parent').append($section);
+        $element = Element("Uco", "lav");
+        $('#parent').append($element);
 
         //$('#parent').append($element)
 
