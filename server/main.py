@@ -85,8 +85,10 @@ def user_images():
 ### Helper Functions
 
 def send_json(message, code=200):
+    headers = {'Access-Control-Allow-Origin': '*'}
     return Response(response=json.dumps(message),
                     status=code,
+                    headers=headers,
                     mimetype='application/json')
 
 def error(message, code =400):
